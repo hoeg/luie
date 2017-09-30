@@ -1,9 +1,9 @@
-#include <lua.h>                                /* Always include this when calling Lua */
-#include <lauxlib.h>                            /* Always include this when calling Lua */
-#include <lualib.h>                             /* Always include this when calling Lua */
+#include <lua.h>
+#include <lauxlib.h>
+#include <lualib.h>
 
-#include <stdlib.h>                             /* For function exit() */
-#include <stdio.h>                              /* For input/output */
+#include <stdlib.h>
+#include <stdio.h>
 
 void bail(lua_State *L, char *msg){
   fprintf(stderr, "\nFATAL ERROR:\n  %s: %s\n\n",
@@ -15,24 +15,24 @@ int main(int argc, const char* argv[])
 {
   lua_State *L;
 
-  L = luaL_newstate();                        /* Create Lua state variable */
-  luaL_openlibs(L);                           /* Load Lua libraries */
+  L = luaL_newstate();
+  luaL_openlibs(L);
  
-  if (luaL_loadfile(L, "hello.lua"))    /* Load but don't run the Lua script */
-    bail(L, "luaL_loadfile() failed");      /* Error out if file can't be read */
+  if (luaL_loadfile(L, "hello.lua"))
+    bail(L, "luaL_loadfile() failed");
 
   printf("In C, calling Lua\n");
-  if (lua_pcall(L, 0, 0, 0))                  /* Run the loaded Lua script */
+  if (lua_pcall(L, 0, 0, 0))
     bail(L, "lua_pcall() failed");   
 
   lua_getglobal(L, "doStuff");
 
-  if (lua_pcall(L, 0, 0, 0))                  /* Run the loaded Lua script */
-    bail(L, "lua_pcall() failed");          /* Error out if Lua file has an error */
+  if (lua_pcall(L, 0, 0, 0))
+    bail(L, "lua_pcall() failed");
 
   printf("Back in C again\n");
 
-  lua_close(L);                               /* Clean up, free the Lua state var */
+  lua_close(L);
 
   return 0;
 }

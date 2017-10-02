@@ -10,3 +10,4 @@ pushd ${BUILD_DIR}
 
 cmake -DCMAKE_BUILD_TYPE=Debug ${BASE_DIR} || exit $?
 make || exit $?
+cp ${BASE_DIR}/lua-scripts/* ${BUILD_DIR}/src || exit $?

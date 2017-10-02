@@ -5,6 +5,7 @@ RUN apt-get update && apt-get -y install \
 	clang-3.8 \
 	git \
 	libreadline-dev \
+	cmake \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /src

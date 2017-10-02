@@ -5,33 +5,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct Code {
-  uint32_t size;
-  uint8_t *data;
-} Code;
+#include <stdint.h>
 
-typedef struct Argument {
-  union {
-    uint8_t
-    uint32_t
-  } value;
-} Argument;
-
-typedef struct Arguments {
-  uint32_t size;
-  Argument *args;
-} Arguments;
-
-typedef struct RunnableScript {
-  uint32_t identifier;
-  Code code;
-  Arguments argSpec;
-} RunnableScript;
-
-typedef struct RunnableScripts {
-  RunnableScript *scripts;
-  uint32_t size;
-} RunnableScripts;
+#include <luie/luie_Types.h>
 
 void bail(lua_State *L, char *msg){
   fprintf(stderr, "\nFATAL ERROR:\n  %s: %s\n\n",

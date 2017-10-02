@@ -1,0 +1,36 @@
+cmake_minimum_required(VERSION 2.8.7 FATAL_ERROR)
+project(Luie)
+
+if($ENV{BUILD_NUMBER})
+  set(BUILD_NUMBER $ENV{BUILD_NUMBER})
+else()
+  set(BUILD_NUMBER 0)
+endif()
+
+set(LUIE_NAME "Luie")
+set(LUIE_VERSION "0.1.0.${BUILD_NUMBER}")
+set(LUIE_BRIEF "${LUIE_NAME} Luie provides a framewok for running Lua scripts on any device")
+
+set(DEBUG_FLAGS "-g -O0 -Wall")
+set(RELEASE_FLAGS "-O3")
+
+set(CMAKE_CXX_FLAGS ${RELEASE_FLAGS})
+set(CMAKE_C_FLAGS ${RELEASE_FLAGS})
+
+set(CMAKE_CXX_FLAGS_DEBUG ${DEBUG_FLAGS})
+set(CMAKE_CXX_FLAGS_DEBUG ${GCOV_FLAGS})
+set(CMAKE_C_FLAGS_DEBUG ${DEBUG_FLAGS})
+set(CMAKE_C_FLAGS_DEBUG ${GCOV_FLAGS})
+set(CMAKE_EXE_LINKER_FLAGS_DEBUG ${GCOV_FLAGS})
+
+set(CMAKE_CONFIGURATION_TYPES Debug Release)
+#message("CMAKE_CFG_INTDIR = ${CMAKE_CFG_INTDIR}")
+
+add_subdirectory(src)
+
+install(FILES
+	${README_FILE}
+	${LICENSE_FILE}
+  DESTINATION .
+)
+

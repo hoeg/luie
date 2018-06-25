@@ -1,0 +1,18 @@
+{
+  "summary": {
+    "title": "Input Script",
+    "owner": "hoeg",
+    "description": "Loading a script into memory ready for execution"
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "title": "Load script",
+        "thumbnail": "./public/content/images/thumbnail.jpg",
+        "id": 0
+      }
+    ],
+    "reviewer": "hoeg"
+  }
+}
